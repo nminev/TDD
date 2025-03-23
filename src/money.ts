@@ -1,13 +1,20 @@
 // money.ts
 
-export class Dollar {
-    amount: number;
+export class Money {
+    protected amount: number;
 
     constructor(amount: number) {
         this.amount = amount;
     }
+}
 
-    equals(dollar: Dollar): any {
+export class Dollar extends Money {
+
+    constructor(amount: number) {
+        super(amount);
+    }
+
+    equals(dollar: Dollar): boolean {
         return this.amount === dollar.amount;
     }
 
@@ -16,14 +23,13 @@ export class Dollar {
     }
 }
 
-export class Franc {
-    amount: number;
+export class Franc extends Money {
 
     constructor(amount: number) {
-        this.amount = amount;
+        super(amount);
     }
 
-    equals(dollar: Franc): any {
+    equals(dollar: Franc): boolean {
         return this.amount === dollar.amount;
     }
 
