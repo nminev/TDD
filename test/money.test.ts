@@ -1,4 +1,4 @@
-import { Dollar, Franc } from "../src/money.ts"
+import { Dollar, Franc, Money } from "../src/money.ts"
 import { assertEquals } from "jsr:@std/assert"
 
 // 1. Quickly add a test.
@@ -18,9 +18,10 @@ import { assertEquals } from "jsr:@std/assert"
 // [ ]  Dollar/Franc duplication
 // [X]  Common ammount
 // [X]  Common equals
+// [ ]  Common times
 
 Deno.test("Test Dollar multiplication", () => {
-  const five = new Dollar(5)
+  const five = new Money(5, "USD")
   assertEquals(five.equals(new Dollar(5)), true)
   assertEquals(five.times(2).equals(new Dollar(10)), true)
   assertEquals(five.times(3).equals(new Dollar(15)), true)
