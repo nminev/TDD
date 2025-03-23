@@ -6,16 +6,17 @@ export class Money {
     constructor(amount: number) {
         this.amount = amount;
     }
+
+    equals(money: Money): boolean {
+        const sameType = money instanceof this.constructor;
+        return sameType && this.amount === money.amount;
+    }
 }
 
 export class Dollar extends Money {
 
     constructor(amount: number) {
         super(amount);
-    }
-
-    equals(dollar: Dollar): boolean {
-        return this.amount === dollar.amount;
     }
 
     times(multiplier: number) {
@@ -28,11 +29,6 @@ export class Franc extends Money {
     constructor(amount: number) {
         super(amount);
     }
-
-    equals(dollar: Franc): boolean {
-        return this.amount === dollar.amount;
-    }
-
 
     times(multiplier: number) {
         return new Franc(this.amount * multiplier);

@@ -16,6 +16,8 @@ import { assertEquals } from "jsr:@std/assert"
 // [X]  Equals ?
 // [X]  5 CHF * 2 = 10 CHF
 // [ ]  Dollar/Franc duplication
+// [X]  Common ammount
+// [X]  Common equals
 
 Deno.test("Test Dollar multiplication", () => {
   const five = new Dollar(5)
@@ -31,13 +33,11 @@ Deno.test("Test Franc multiplication", () => {
   assertEquals(five.times(3).equals(new Franc(15)), true)
 })
 
-Deno.test("Test equals Dollar", () => {
+Deno.test("Test equals", () => {
   assertEquals(new Dollar(5).equals(new Dollar(5)), true)
   assertEquals(new Dollar(5).equals(new Dollar(6)), false)
-})
-
-Deno.test("Test equals Franc", () => {
   assertEquals(new Franc(5).equals(new Franc(5)), true)
   assertEquals(new Franc(5).equals(new Franc(6)), false)
+  assertEquals(new Dollar(5).equals(new Franc(5)), false)
 })
 
