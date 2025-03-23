@@ -14,21 +14,7 @@ export class Money {
     }
 
     equals(money: Money): boolean {
-        const sameType = money instanceof this.constructor;
+        const sameType = this.currency === money.currency;
         return sameType && this.amount === money.amount;
-    }
-}
-
-export class Dollar extends Money {
-
-    constructor(amount: number) {
-        super(amount, "USD");
-    }
-}
-
-export class Franc extends Money {
-
-    constructor(amount: number) {
-        super(amount, "CHF");
     }
 }
