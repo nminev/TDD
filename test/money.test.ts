@@ -9,12 +9,7 @@ import { assertEquals } from "jsr:@std/assert"
 
 // TODO:
 // [ ]  $5 + 10 CHF = $10 if rate is 2:1
-// [X]  $5 * 2 = $10
-// [X]  Make amount private
-// [X]  Dollar side effects ?
-// [ ]  Money rounding ?
-// [X]  Equals ?
-// [X]  5 CHF * 2 = 10 CHF
+// [ ]  $5 + $5 = $10
 
 Deno.test("Test Dollar multiplication", () => {
   const fiveDollars = new Money(5, "USD")
