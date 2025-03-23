@@ -12,12 +12,21 @@ import { Dollar } from '../src/money'
 // [ ]  Make amount private
 // [X]  Dollar side effects ?
 // [ ]  Money rounding ?
+// [X]  Equals ?
 
 test('Test multiplication', () => {
   const five = new Dollar(5)
   const ten = five.times(2)
   const fifteen = five.times(3)
-  expect(five.amount).toBe(5)
-  expect(ten.amount).toBe(10)
-  expect(fifteen.amount).toBe(15)
+  expect(five.equals(new Dollar(5))).toBe(true)
+  expect(ten.equals(new Dollar(10))).toBe(true)
+  expect(fifteen.equals(new Dollar(15))).toBe(true)
+})
+
+test('Test $5 equals $5', () => {
+  expect(new Dollar(5).equals(new Dollar(5))).toBe(true)
+})
+
+test('Test $5 does not equal $6', () => {
+  expect(new Dollar(5).equals(new Dollar(6))).toBe(false)
 })
