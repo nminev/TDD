@@ -1,4 +1,4 @@
-import { Dollar } from '../src/money'
+import { Dollar, Franc } from '../src/money'
 
 // 1. Quickly add a test.
 // 2. Run all tests and see the new one fail
@@ -13,16 +13,22 @@ import { Dollar } from '../src/money'
 // [X]  Dollar side effects ?
 // [ ]  Money rounding ?
 // [X]  Equals ?
+// [ ]  5 CHF * 2 = 10 CHF
 
-test('Test multiplication', () => {
+test('Test Dollar multiplication', () => {
   const five = new Dollar(5)
-  const ten = five.times(2)
-  const fifteen = five.times(3)
   expect(five.equals(new Dollar(5))).toBe(true)
-  expect(ten.equals(new Dollar(10))).toBe(true)
-  expect(fifteen.equals(new Dollar(15))).toBe(true)
+  expect(five.times(2).equals(new Dollar(10))).toBe(true)
+  expect(five.times(3).equals(new Dollar(15))).toBe(true)
 })
 
+
+test('Test Franc multiplication', () => {
+  const five = new Franc(5)
+  expect(five.equals(new Franc(5))).toBe(true)
+  expect(five.times(2).equals(new Franc(10))).toBe(true)
+  expect(five.times(3).equals(new Franc(15))).toBe(true)
+})
 test('Test $5 equals $5', () => {
   expect(new Dollar(5).equals(new Dollar(5))).toBe(true)
 })

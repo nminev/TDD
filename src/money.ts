@@ -15,3 +15,20 @@ export class Dollar {
         return new Dollar(this.amount * multiplier);
     }
 }
+
+export class Franc {
+    amount: number;
+
+    constructor(amount: number) {
+        this.amount = amount;
+    }
+
+    equals(dollar: Franc): any {
+        return this.amount === dollar.amount;
+    }
+
+
+    times(multiplier: number) {
+        return new Franc(this.amount * multiplier);
+    }
+}
