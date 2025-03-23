@@ -10,11 +10,14 @@ import { Dollar } from '../src/money'
 // [ ]  $5 + 10 CHF = $10 if rate is 2:1
 // [X]  $5 * 2 = $10
 // [ ]  Make amount private
-// [ ]  Dollar side effects ?
+// [X]  Dollar side effects ?
 // [ ]  Money rounding ?
 
-test('5 dollars times 2 is 10 dollars', () => {
+test('Test multiplication', () => {
   const five = new Dollar(5)
-  five.times(2)
-  expect(five.amount).toBe(10)
+  const ten = five.times(2)
+  const fifteen = five.times(3)
+  expect(five.amount).toBe(5)
+  expect(ten.amount).toBe(10)
+  expect(fifteen.amount).toBe(15)
 })
