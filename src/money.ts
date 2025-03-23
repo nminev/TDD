@@ -6,7 +6,8 @@ export class Dollar {
     constructor(amount: number) {
         this.amount = amount;
     }
+
     times(multiplier: number) {
-        this.amount = 10;
+        this.amount = this.amount * multiplier;
     }
 }
