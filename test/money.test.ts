@@ -1,4 +1,4 @@
-// import { } from "../src/money.ts"
+import { Money } from "../src/money.ts"
 import { assertEquals } from "jsr:@std/assert"
 
 // 1. Quickly add a test.
@@ -9,10 +9,40 @@ import { assertEquals } from "jsr:@std/assert"
 
 // TODO:
 // [ ]  $5 + 10 CHF = $10 if rate is 2:1
-// [ ]  $5 *2 = $10 - WIP
+// [ ]  Money rounding ? 
+// [ ]  Compare Dollars to Francs ? 
 
-Deno.test("5 dollars times 2 is 10 dollars", () => {
-  const five = new Dollar(5, "USD");
-  const product = five.times(2)
-  assertEquals(product.amount, 10)
+
+Deno.test("Test different currency equality", () => {
+  const fiveDollars = new Money(5, "USD");
+  const tenFrancs = new Money(10, "CHF");
+
+  const sum = fiveDollars.plus(tenFrancs); // Given CHF 2:1 Dollar
+
+  assertEquals(sum.equal(new Money(10, "USD")), true)
+
+})
+
+Deno.test("Test Dollar multiplication", () => {
+  const fiveDollars = new Money(5, "USD");
+  const tenDollars = fiveDollars.times(2);
+
+  assertEquals(fiveDollars.equal(new Money(5, "USD")), true)
+  assertEquals(tenDollars.equal(new Money(10, "USD")), true)
+})
+
+Deno.test("Test Franc multiplication", () => {
+  const fiveFrancs = new Money(5, "CHF");
+  const tenFrancs = fiveFrancs.times(2);
+
+  assertEquals(fiveFrancs.equal(new Money(5, "CHF")), true)
+  assertEquals(tenFrancs.equal(new Money(10, "CHF")), true)
+})
+
+Deno.test("Test equality", () => {
+  assertEquals(new Money(5, "USD").equal(new Money(5, "USD")), true)
+})
+
+Deno.test("Test non equality", () => {
+  assertEquals(new Money(5, "USD").equal(new Money(6, "USD")), false)
 })
